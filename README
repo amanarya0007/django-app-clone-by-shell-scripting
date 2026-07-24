@@ -1,0 +1,204 @@
+# Django Notes App Deployment Automation
+
+A Bash script that automates the deployment of a Django Notes application on an Ubuntu server using Docker, Docker Compose, and Nginx.
+
+## 🚀 Features
+
+- Clones the Django Notes App repository
+- Installs all required dependencies
+  - Docker
+  - Docker Compose
+  - Nginx
+- Configures Docker permissions
+- Enables and restarts required services
+- Builds the Docker image
+- Deploys the application using Docker Compose
+- Includes basic error handling for each deployment step
+
+---
+
+## 📂 Project Structure
+
+```
+.
+├── deploy.sh
+└── README.md
+```
+
+---
+
+## 🛠️ Technologies Used
+
+- Bash Shell Scripting
+- Linux (Ubuntu)
+- Docker
+- Docker Compose
+- Nginx
+- Git
+- Django
+
+---
+
+## 📋 Prerequisites
+
+Before running the script, ensure:
+
+- Ubuntu-based Linux system
+- Git installed
+- Internet connection
+- Sudo privileges
+
+---
+
+## ⚙️ Installation
+
+Clone this repository
+
+```bash
+git clone <your-repository-url>
+cd <repository-name>
+```
+
+Give execute permission
+
+```bash
+chmod +x deploy.sh
+```
+
+Run the script
+
+```bash
+./deploy.sh
+```
+
+---
+
+## 🔄 Deployment Workflow
+
+The script performs the following operations:
+
+### 1. Clone Repository
+
+Checks whether the project directory already exists.
+
+If it doesn't exist, clones the Django Notes App from GitHub.
+
+---
+
+### 2. Install Dependencies
+
+Installs:
+
+- Docker
+- Docker Compose
+- Nginx
+
+using
+
+```bash
+sudo apt-get update
+sudo apt-get install -y nginx docker.io docker-compose
+```
+
+---
+
+### 3. Configure Services
+
+- Changes Docker socket ownership
+- Enables Docker service
+- Enables Nginx service
+- Restarts Docker
+
+---
+
+### 4. Deploy Application
+
+Builds the Docker image
+
+```bash
+docker build -t notes-app .
+```
+
+Starts containers
+
+```bash
+docker compose up -d
+```
+
+---
+
+## 📦 Repository Used
+
+The deployment script clones the following Django application:
+
+https://github.com/LondheShubham153/django-notes-app
+
+---
+
+## ▶️ Output
+
+```
+******** DEPLOYEMENT STARTED ********
+
+Cloning the django app...
+
+Installing the required softwares...
+
+Performing the restart to build the django app...
+
+Finally deploying the app...
+
+******** DEPLOYEMENT DONE ********
+```
+
+---
+
+## ❗ Error Handling
+
+The script stops execution if any of the following steps fail:
+
+- Repository cloning
+- Dependency installation
+- Docker configuration
+- Docker image build
+- Container deployment
+
+This prevents incomplete deployments.
+
+---
+
+## 📸 Screenshots
+
+Add screenshots of:
+
+- EC2 Instance
+- Terminal execution
+- Running Docker containers
+- Application running in browser
+
+---
+
+## 👨‍💻 Author
+
+**Aman Arya**
+
+B.Tech (Electronics & Communication Engineering)
+
+Front-End Developer | DevOps Enthusiast
+
+GitHub: https://github.com/amanarya0007
+
+LinkedIn: https://www.linkedin.com/in/aman-arya-a4a565232/
+
+---
+
+## ⭐ Future Improvements
+
+- AWS CLI automation
+- Security Group automation
+- SSL using Let's Encrypt
+- Automatic Docker updates
+- Logging support
+- Rollback mechanism
+- Health checks
+- CI/CD integration with GitHub Actions
